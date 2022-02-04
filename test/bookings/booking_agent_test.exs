@@ -40,7 +40,7 @@ defmodule Flightex.Bookings.AgentTest do
       expected_response =
         {:ok,
          %Flightex.Bookings.Booking{
-           complete_date: ~N[2001-05-07 03:05:00],
+           complete_date: ~N[2021-04-07 03:05:00],
            id: id,
            local_destination: "Bananeiras",
            local_origin: "Brasilia",

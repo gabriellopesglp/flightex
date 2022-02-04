@@ -6,16 +6,30 @@
     {
       "describe": "build/4",
       "file": "/home/gabera/elixir/flightex/test/users/users_test.exs",
+      "line": 22,
+      "module": "Elixir.Flightex.Users.UserTest",
+      "test": "test build/4 when cpf is a integer"
+    },
+    {
+      "describe": "build/4",
+      "file": "/home/gabera/elixir/flightex/test/users/users_test.exs",
       "line": 9,
       "module": "Elixir.Flightex.Users.UserTest",
       "test": "test build/4 when all params are valid, returns the user"
     },
     {
-      "describe": "build/4",
-      "file": "/home/gabera/elixir/flightex/test/users/users_test.exs",
-      "line": 22,
-      "module": "Elixir.Flightex.Users.UserTest",
-      "test": "test build/4 when cpf is a integer"
+      "describe": "generate_report/2",
+      "file": "/home/gabera/elixir/flightex/test/bookings/report_test.exs",
+      "line": 41,
+      "module": "Elixir.Flightex.Bookings.ReportTest",
+      "test": "test generate_report/2 when there is invalid params, returns an error"
+    },
+    {
+      "describe": "generate_report/2",
+      "file": "/home/gabera/elixir/flightex/test/bookings/report_test.exs",
+      "line": 15,
+      "module": "Elixir.Flightex.Bookings.ReportTest",
+      "test": "test generate_report/2 when all params are valid, generates the report of bookings"
     },
     {
       "describe": "build/4",
@@ -34,9 +48,9 @@
     {
       "describe": "get/1",
       "file": "/home/gabera/elixir/flightex/test/users/user_agent_test.exs",
-      "line": 43,
+      "line": 56,
       "module": "Elixir.Flightex.Users.AgentTest",
-      "test": "test get/1 when the user is found, returns the user"
+      "test": "test get/1 when the user is't founded, returns an error"
     },
     {
       "describe": "save/1",
@@ -48,16 +62,16 @@
     {
       "describe": "get/1",
       "file": "/home/gabera/elixir/flightex/test/users/user_agent_test.exs",
-      "line": 56,
+      "line": 43,
       "module": "Elixir.Flightex.Users.AgentTest",
-      "test": "test get/1 when the user is't founded, returns an error"
+      "test": "test get/1 when the user is found, returns the user"
     },
     {
       "describe": "get/1",
       "file": "/home/gabera/elixir/flightex/test/bookings/booking_agent_test.exs",
-      "line": 34,
+      "line": 53,
       "module": "Elixir.Flightex.Bookings.AgentTest",
-      "test": "test get/1 when the user is found, return a booking"
+      "test": "test get/1 when the user wasn't found, returns an error"
     },
     {
       "describe": "save/1",
@@ -69,16 +83,9 @@
     {
       "describe": "get/1",
       "file": "/home/gabera/elixir/flightex/test/bookings/booking_agent_test.exs",
-      "line": 53,
+      "line": 34,
       "module": "Elixir.Flightex.Bookings.AgentTest",
-      "test": "test get/1 when the user wasn't found, returns an error"
-    },
-    {
-      "describe": "call/1",
-      "file": "/home/gabera/elixir/flightex/test/users/create_or_update_test.exs",
-      "line": 14,
-      "module": "Elixir.Flightex.Users.CreateOrUpdateTest",
-      "test": "test call/1 when all params are valid, return a tuple"
+      "test": "test get/1 when the user is found, return a booking"
     },
     {
       "describe": "call/1",
@@ -86,6 +93,13 @@
       "line": 35,
       "module": "Elixir.Flightex.Users.CreateOrUpdateTest",
       "test": "test call/1 when cpf is a integer, returns an error"
+    },
+    {
+      "describe": "call/1",
+      "file": "/home/gabera/elixir/flightex/test/users/create_or_update_test.exs",
+      "line": 14,
+      "module": "Elixir.Flightex.Users.CreateOrUpdateTest",
+      "test": "test call/1 when all params are valid, return a tuple"
     }
   ],
   "skiped": []

@@ -1,33 +1,47 @@
-# Este teste é opcional, mas vale a pena tentar e se desafiar 😉
+defmodule Flightex.Bookings.ReportTest do
+  use ExUnit.Case
+  alias Flightex.Bookings.CreateOrUpdate
+  alias Flightex.Bookings.Report
+  alias Flightex.Users.Agent, as: UserAgent
 
-# defmodule Flightex.Bookings.ReportTest do
-#   use ExUnit.Case, async: true
+  import Flightex.Factory
 
-#   alias Flightex.Bookings.Report
+  describe "generate_report/2" do
+    setup %{} do
+      Flightex.start_agents()
+      :ok
+    end
 
-#   describe "generate/1" do
-#     setup do
-#       Flightex.start_agents()
+    test "when all params are valid, generates the report of bookings" do
+      cpf = "12345678900"
 
-#       :ok
-#     end
+      user = build(:users, cpf: cpf)
+      UserAgent.save(user)
 
-#     test "when called, return the content" do
-#       params = %{
-#         complete_date: ~N[2001-05-07 12:00:00],
-#         local_origin: "Brasilia",
-#         local_destination: "Bananeiras",
-#         user_id: "12345678900",
-#         id: UUID.uuid4()
-#       }
+      params1 = build(:booking)
 
-#       content = "12345678900,Brasilia,Bananeiras,2001-05-07 12:00:00"
+      params2 =
+        build(:booking,
+          user_id: cpf,
+          local_origin: "São Paulo",
+          local_destination: "Santa Catarina"
+        )
 
-#       Flightex.create_or_update_booking(params)
-#       Report.generate("report-test.csv")
-#       {:ok, file} = File.read("report-test.csv")
+      CreateOrUpdate.call(params1)
 
-#       assert file =~ content
-#     end
-#   end
-# end
+      CreateOrUpdate.call(params2)
+
+      response = Report.generate_report("2021-04-01 10:00:00", "2021-05-30 22:00:00")
+
+      expected_response = {:ok, "Report generated successfully"}
+
+      assert expected_response == response
+    end
+
+    test "when there is invalid params, returns an error" do
+      response = Report.generate_report("2021-02-31 10:00:00", "2021-02-31 22:00:00")
+      expected_response = {:error, :invalid_date}
+      assert expected_response == response
+    end
+  end
+end
